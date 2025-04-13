@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Special One 💕</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+      touch-action: none;
+    }
+
+    body {
+      overflow: hidden;
+      display: flex;
+      background: #111;
+      perspective: 1000px;
+      transform-style: preserve-3d;
+    }
+
+    #drag-container, #spin-container {
+      position: relative;
+      display: flex;
+      margin: auto;
+      transform-style: preserve-3d;
+      transform: rotateX(-10deg);
+    }
+
+    #drag-container img {
+      transform-style: preserve-3d;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      box-shadow: 0 0 8px #fff;
+      -webkit-box-reflect: below 10px linear-gradient(transparent, transparent, #0005);
+    }
+
+    #drag-container img:hover {
+      box-shadow: 0 0 15px #fffd;
+      -webkit-box-reflect: below 10px linear-gradient(transparent, transparent, #0007);
+    }
+
+    #drag-container p {
+      font-family: Serif;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translate(-50%,-50%) rotateX(90deg);
+      color: #fff;
+    }
+
+    #ground {
+    width: 900px;
+    height: 900px;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%) rotateX(90deg);
+            transform: translate(-50%,-50%) rotateX(90deg);
+    background: -webkit-radial-gradient(center center, farthest-side , #9993, transparent);
+  }
+  
+    #music-container {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      z-index: 999;
+    }
+
+    button#play-music-btn {
+      padding: 10px 15px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      background: #ff4081;
+      color: white;
+      cursor: pointer;
+    }
+
+    @keyframes spin {
+      from { transform: rotateY(0deg); }
+      to   { transform: rotateY(360deg); }
+    }
+
+    @keyframes spinRevert {
+      from { transform: rotateY(360deg); }
+      to   { transform: rotateY(0deg); }
+    }
+  </style>
+</head>
+<body>
+
+<div id="music-container">
+  <button id="play-music-btn">💕 Tap to Play Music</button>
+</div>
+
+<div id="drag-container">
+  <div id="spin-container">
+    <!-- Your images -->
+    
+    <img src="https://scontent.fblr11-1.fna.fbcdn.net/v/t1.15752-9/473712044_2147949938968498_5733640142777776815_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=0024fc&_nc_ohc=s9IiXHHIaywQ7kNvgGtjVt2&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fblr11-1.fna&oh=03_Q7cD1wEFi6HYAE1dobCvdLNN9PEDBCribuLubm9HOeexH8x4WA&oe=680DCBEA" alt="">
+    <img src="https://scontent.fblr11-1.fna.fbcdn.net/v/t1.15752-9/473067852_8961707820615937_2692365689080358982_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=0024fc&_nc_ohc=UnEOWufV9mgQ7kNvgFjOGKv&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fblr11-1.fna&oh=03_Q7cD1wHDIMez2iKk9Rshu3sRHWvgRrikVB3gxDTgvLsHAGhqsA&oe=680DC533" alt="">
+    <img src="https://scontent.fblr11-1.fna.fbcdn.net/v/t1.15752-9/473280875_974223364599073_1117770090364726679_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=0024fc&_nc_ohc=yT_c43qe9scQ7kNvgHh526V&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fblr11-1.fna&oh=03_Q7cD1wE6NrrgUiTdQg2CWsR89_vTGhuMs9FYD1151Y16q2UB7g&oe=680DCF49" alt="">
+    <img src="https://scontent.fblr11-1.fna.fbcdn.net/v/t1.15752-9/462577553_1174587947423100_1938043631604787009_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=0024fc&_nc_ohc=QNEhMFqMaQsQ7kNvgGg9ETE&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fblr11-1.fna&oh=03_Q7cD1wEfEE6gV15F0_wWv2J4r_wOmaePobmgnxgGQtqNIbf_1Q&oe=680DD42D" alt="">
+    <img src="https://scontent.fblr11-1.fna.fbcdn.net/v/t1.15752-9/317674917_856941042112668_324154261902009439_n.jpg?stp=dst-jpg_p480x480_tt6&_nc_cat=109&ccb=1-7&_nc_sid=0024fc&_nc_ohc=84AWyhREPzMQ7kNvgEziWIb&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fblr11-1.fna&oh=03_Q7cD1wEG6STWL76Sm7KgzpOr_Ww1MSK7tffhv0yeuNFUxoe5yw&oe=680DCC7C" alt="">
+    <img src="https://scontent.fblr11-1.fna.fbcdn.net/v/t1.15752-9/325714806_701528318119867_6826278706627907026_n.jpg?stp=dst-jpg_p480x480_tt6&_nc_cat=110&ccb=1-7&_nc_sid=0024fc&_nc_ohc=Wz4Ql3ayMAgQ7kNvgEQrVk7&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fblr11-1.fna&oh=03_Q7cD1wHnE-R26XHq0BtGw8jlkxZA5XtFSwBGbYQt5P3cSpDKNw&oe=680DC88A" alt="">
+    <img src="https://scontent.fblr11-1.fna.fbcdn.net/v/t1.15752-9/472644504_637871768767738_1803642571965095904_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=0024fc&_nc_ohc=dLblCMsZ5hIQ7kNvgEcvd90&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fblr11-1.fna&oh=03_Q7cD1wG3BlXoRMd4PYcxH8ssRcH8Qpbssg6DcLGIMFQMqrYocQ&oe=680DCB38" alt="">
+    
+    <img src="https://scontent.fblr11-1.fna.fbcdn.net/v/t1.15752-9/335432258_1241596806458157_6269897310053183141_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=0024fc&_nc_ohc=J17JNXIFpzQQ7kNvgF8GhDu&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fblr11-1.fna&oh=03_Q7cD1wERp-5EpkAnFpRoki8mEn7cmy8Vmrl_t-uqV_k5TUMZkw&oe=680DB4A7" alt="">
+    <img src="https://scontent.fblr11-1.fna.fbcdn.net/v/t1.15752-9/321418515_1108242483177225_6255018656135520668_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=0024fc&_nc_ohc=dPWh1kHUohQQ7kNvgEbCJc0&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fblr11-1.fna&oh=03_Q7cD1wGoVGo9EpyeW3DT_t8cjUgkRbvGzCvscgZ2za_DgO3WFg&oe=680DAE89" alt="">
+    <img src="https://scontent.fblr11-1.fna.fbcdn.net/v/t1.15752-9/322821779_1379202382892306_4964433453474942776_n.jpg?stp=dst-jpg_p480x480_tt6&_nc_cat=102&ccb=1-7&_nc_sid=0024fc&_nc_ohc=50lBZqBNJ1MQ7kNvgFTIpf1&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fblr11-1.fna&oh=03_Q7cD1wGBWbfWiC0wjtyuJI2BEjmptJqsljMQTwx1vzh2wHJ3Jg&oe=680DD2C9" alt="">
+    
+    <p>I always thought love was a static class until you made an instance of it.</p>
+  </div>
+  <div id="ground"></div>
+</div>
+
+<script>
+  var radius = 240;
+  var autoRotate = true;
+  var rotateSpeed = -60;
+  var imgWidth = 120;
+  var imgHeight = 170;
+
+  var tX = 0, tY = 10;
+  var desX = 0, desY = 0;
+
+  setTimeout(init, 1000);
+
+  var odrag = document.getElementById('drag-container');
+  var ospin = document.getElementById('spin-container');
+  var aEle = ospin.getElementsByTagName('img');
+
+  ospin.style.width = imgWidth + "px";
+  ospin.style.height = imgHeight + "px";
+
+  var ground = document.getElementById('ground');
+  ground.style.width = radius * 3 + "px";
+  ground.style.height = radius * 3 + "px";
+
+  function init(delayTime) {
+    for (var i = 0; i < aEle.length; i++) {
+      aEle[i].style.transform = "rotateY(" + (i * (360 / aEle.length)) + "deg) translateZ(" + radius + "px)";
+      aEle[i].style.transition = "transform 1s";
+      aEle[i].style.transitionDelay = delayTime || (aEle.length - i) / 4 + "s";
+    }
+  }
+
+  function applyTranform(obj) {
+    if (tY > 180) tY = 180;
+    if (tY < 0) tY = 0;
+    obj.style.transform = "rotateX(" + (-tY) + "deg) rotateY(" + (tX) + "deg)";
+  }
+
+  function playSpin(yes) {
+    ospin.style.animationPlayState = (yes ? 'running' : 'paused');
+  }
+
+  if (autoRotate) {
+    var animationName = (rotateSpeed > 0 ? 'spin' : 'spinRevert');
+    ospin.style.animation = `${animationName} ${Math.abs(rotateSpeed)}s infinite linear`;
+  }
+
+  document.onpointerdown = function (e) {
+    clearInterval(odrag.timer);
+    var sX = e.clientX,
+        sY = e.clientY;
+
+    this.onpointermove = function (e) {
+      var nX = e.clientX,
+          nY = e.clientY;
+      desX = nX - sX;
+      desY = nY - sY;
+      tX += desX * 0.1;
+      tY += desY * 0.1;
+      applyTranform(odrag);
+      sX = nX;
+      sY = nY;
+    };
+
+    this.onpointerup = function () {
+      odrag.timer = setInterval(function () {
+        desX *= 0.95;
+        desY *= 0.95;
+        tX += desX * 0.1;
+        tY += desY * 0.1;
+        applyTranform(odrag);
+        playSpin(false);
+        if (Math.abs(desX) < 0.5 && Math.abs(desY) < 0.5) {
+          clearInterval(odrag.timer);
+          playSpin(true);
+        }
+      }, 17);
+      this.onpointermove = this.onpointerup = null;
+    };
+
+    return false;
+  };
+
+  document.onmousewheel = function (e) {
+    var d = e.wheelDelta / 20 || -e.detail;
+    radius += d;
+    init(1);
+  };
+
+  // 🎵 Music play on button click
+  const musicBtn = document.getElementById('play-music-btn');
+  const musicContainer = document.getElementById('music-container');
+
+  const audio = new Audio('https://user-images.githubusercontent.com/151072490/283747943-7b08424b-8647-4bdc-996c-965063dbb5e3.mp4');
+  audio.loop = true;
+  audio.autoplay = true;
+  audio.preload = "auto";
+
+  musicBtn.addEventListener('click', function () {
+    audio.play().then(() => {
+      musicBtn.style.display = "none";
+      musicContainer.appendChild(audio);
+    }).catch((e) => {
+      alert("Please tap again to play music.");
+      console.error("Music play error:", e);
+    });
+  });
+</script>
+
+</body>
+</html>
